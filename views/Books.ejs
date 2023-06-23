@@ -39,7 +39,7 @@
                 >Edit</a
               >
               <form
-                action="/books/<%= books[i]._id %>?_method=DELETE"
+                action="/books/<%= books[i]._id %>/method=DELETE"
                 method="POST" style="display: inline"
               >
                 <button type="submit" class="btn btn-danger">Delete</button>
@@ -49,7 +49,7 @@
           <% } %>
         </tbody>
       </table>
-      <a href="/books/add-book" class="btn btn-primary">Add New Book</a>
+      <a href="/add-book" class="btn btn-primary">Add New Book</a>
     </div>
   </body>
 </html>
