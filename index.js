@@ -1,9 +1,31 @@
 const express = require("express");
+const mongoose = require("mongoose");
+const BookSchema = require("./models/Book");
+
+mongoose
+  .connect("mongodb://127.0.0.1:27017", {
+    dbName: "BookStore",
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Mongodb connected");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 const app = express();
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.render("home.ejs");
+});
+
+app.get("/Books", async (req, res) => {
+  const books = await BookSchema.find();
+  console.log(books);
+  res.render("Books.ejs", { books: books });
 });
 
 app.listen(3000, () => {
