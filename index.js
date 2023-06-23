@@ -18,11 +18,7 @@ mongoose
 const app = express();
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.render("home.ejs");
-});
-
-app.get("/Books", async (req, res) => {
+app.get("/", async (req, res) => {
   const books = await BookSchema.find();
   res.render("Books.ejs", { books: books });
 });
@@ -30,6 +26,10 @@ app.get("/Books", async (req, res) => {
 app.get("/Books/:id", async (req, res) => {
   const filteredbook = await BookSchema.find({ _id: req.params.id });
   res.render("BookDetails.ejs", { book: filteredbook[0] });
+});
+
+app.get("/about", (req, res) => {
+  res.render("about.ejs");
 });
 
 app.listen(3000, () => {
