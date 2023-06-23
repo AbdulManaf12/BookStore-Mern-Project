@@ -13,6 +13,7 @@
     />
   </head>
   <body>
+    <%- include('navbar')%>
     <div class="container">
       <h1 class="text-center">Books</h1>
       <table class="table" border="1">
@@ -31,14 +32,14 @@
             <td><%= books[i].author %></td>
             <td><%= books[i].price %></td>
             <td>
-              <a href="/books/<%= books[i].book_id %>" class="btn btn-primary"
+              <a href="/books/<%= books[i]._id %>" class="btn btn-primary"
                 >View</a
               >
-              <a href="/books/<%= books[i].book_id %>/edit" class="btn btn-warning"
+              <a href="/books/<%= books[i]._id %>/edit" class="btn btn-warning"
                 >Edit</a
               >
               <form
-                action="/books/<%= books[i].book_id %>?_method=DELETE"
+                action="/books/<%= books[i]._id %>?_method=DELETE"
                 method="POST" style="display: inline"
               >
                 <button type="submit" class="btn btn-danger">Delete</button>
@@ -48,7 +49,7 @@
           <% } %>
         </tbody>
       </table>
-      <a href="/books/new" class="btn btn-primary">Add New Book</a>
+      <a href="/books/add-book" class="btn btn-primary">Add New Book</a>
     </div>
   </body>
 </html>
